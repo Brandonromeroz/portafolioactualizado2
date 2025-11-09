@@ -146,12 +146,12 @@ export function ExperienceSection() {
           className="flex justify-center items-center gap-12 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
         >
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">3+</h3>
+            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">2+</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm">Años</p>
           </div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">15+</h3>
+            <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">10+</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm">Proyectos</p>
           </div>
           

@@ -189,8 +189,8 @@ export function CollaborationsSection() {
               className="text-center lg:text-left pt-4"
             >
               <p className="text-gray-600 dark:text-gray-400 font-medium">
-                ¡Gracias por tu apoyo! 🙌
-              </p>
+{/*                 ¡Gracias por tu apoyo! 🙌
+ */}              </p>
             </motion.div>
           </motion.div>
 

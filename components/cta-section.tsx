@@ -76,7 +76,7 @@ export function CTASection() {
           >
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                3+
+                2+
               </div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">
                 Años de experiencia
@@ -85,7 +85,7 @@ export function CTASection() {
             
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                15+
+                10+
               </div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">
                 Proyectos completados
@@ -94,7 +94,7 @@ export function CTASection() {
             
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                970+
+                900+
               </div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">
                 Suscriptores YouTube

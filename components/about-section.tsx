@@ -5,12 +5,12 @@ import { MapPin, Calendar, Heart, Youtube } from "lucide-react"
 
 const technologies = [
   "html", "css", "javascript", "typescript", "react", "nextjs", 
-  "nodejs", "mongodb", "tailwind", "figma", "git", "docker", "firebase", "astro"
+  "nodejs", "mongodb", "tailwind", "figma", "git", "docker", "astro"
 ]
 
 const stats = [
-  { number: "3+", label: "Años de experiencia", icon: "💼" },
-  { number: "15+", label: "Proyectos completados", icon: "🚀" },
+  { number: "2+", label: "Años de experiencia", icon: "💼" },
+  { number: "10+", label: "Proyectos completados", icon: "🚀" },
   { number: "970+", label: "Suscriptores en YouTube", icon: "🎥" }
 ]
 

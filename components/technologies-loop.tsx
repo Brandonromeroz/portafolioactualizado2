@@ -12,7 +12,6 @@ const technologies = [
   "figma",
   "git",
   "docker",
-  "firebase",
   "html",
   "css",
   "javascript",

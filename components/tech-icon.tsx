@@ -78,12 +78,6 @@ const techConfig = {
     hoverColor: "hover:text-green-600 hover:bg-green-600/10",
     name: "MongoDB"
   },
-  "firebase": { 
-    icon: Flame, 
-    color: "text-orange-400",
-    hoverColor: "hover:text-orange-400 hover:bg-orange-400/10",
-    name: "Firebase"
-  },
   "supabase": { 
     icon: Database, 
     color: "text-emerald-500",

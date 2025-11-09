@@ -5,7 +5,7 @@ import { YouTubeCounter } from "./youtube-counter"
 
 const technologies = [
   "react", "nextjs", "typescript", "javascript", "nodejs", "mongodb", 
-  "tailwind", "figma", "astro", "firebase", "git", "docker"
+  "tailwind", "figma", "astro", "git", "docker"
 ]
 
 const experience = [

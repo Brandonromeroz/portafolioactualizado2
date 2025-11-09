@@ -115,9 +115,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-              <span>© {new Date().getFullYear()} Brandon Romero. Hecho con</span>
-              <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" />
-              <span>en México</span>
+              <span>© {new Date().getFullYear()} Brandon Romero.</span>
             </div>
 
             <motion.button

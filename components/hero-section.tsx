@@ -55,7 +55,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-ñ        <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
+       <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
           
           {/* Main Content */}
           <motion.div
