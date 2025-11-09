@@ -75,7 +75,7 @@ export function HeroSection() {
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white dark:border-gray-800 shadow-lg">
                 <Image
                   src="/devbran.jpg"
-                  alt="Brandon Romero - Desarrollador Full Stack"
+                  alt="Brandon Romero Zavala - Desarrollador Full Stack"
                   width={96}
                   height={96}
                   className="w-full h-full object-cover"
@@ -108,13 +108,22 @@ export function HeroSection() {
                 Romero
               </motion.h2>
 
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-gray-500 dark:text-gray-400 leading-none tracking-tight"
+              >           
+                Zavala
+              </motion.h3>
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 font-light"
               >
-                Desarrollador &amp; Creator
+                Desarrollador &amp; Creador de Contenido
               </motion.p>
             </div>
 

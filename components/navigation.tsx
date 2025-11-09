@@ -80,8 +80,12 @@ export function Navigation() {
                 onClick={() => scrollToSection("inicio")}
                 className="flex items-center space-x-2"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">BR</span>
+                <div className="w-10 h-10 rounded-xl overflow-hidden">
+                  <img 
+                    src="/icon.png" 
+                    alt="Brandon Romero" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <span className="hidden sm:block font-bold text-xl text-gray-900 dark:text-white">
                   Brandon

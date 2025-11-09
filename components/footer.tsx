@@ -25,14 +25,20 @@ export function Footer() {
           >
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">BR</span>
+                 <div className="w-10 h-10 rounded-xl overflow-hidden">
+                  <img 
+                    src="/icon.png" 
+                    alt="Brandon Romero" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <div>
                 <h3 className="font-bold text-lg text-gray-900 dark:text-white">
                   Brandon Romero
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Desarrollador & Creator
+                  Desarrollador & Creador de Contenido  
                 </p>
               </div>
             </div>
@@ -85,10 +91,10 @@ export function Footer() {
             </h4>
             <div className="space-y-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                📧 brandon@example.com
+                📧romerozavalabrandon@gmail.com
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                📍 México
+                📍 Ecatepec de Morelos 
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 🎥 Somos Brandon y Rubén TV
@@ -115,7 +121,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-              <span>© {new Date().getFullYear()} Brandon Romero.</span>
+              <span>© {new Date().getFullYear()} Brandon Romero Zavala.</span>
             </div>
 
             <motion.button
