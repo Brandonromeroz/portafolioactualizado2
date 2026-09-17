@@ -4,10 +4,12 @@ import * as React from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { BrandMark } from "@/components/brand-mark"
 import { Menu, X } from "lucide-react"
 
 const sections = [
   { id: "inicio", label: "Inicio" },
+  { id: "sobre-mi", label: "Sobre mí" },
   { id: "experiencia", label: "Experiencia" },
   { id: "colaboraciones", label: "Colaboraciones" },
   { id: "proyectos", label: "Proyectos" },
@@ -21,35 +23,41 @@ export function Navigation() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 12)
 
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 120
+      let current = sections[0].id
+
       for (const section of sections) {
         const element = document.getElementById(section.id)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.id)
-            break
-          }
+        if (element && scrollPosition >= element.offsetTop) {
+          current = section.id
         }
       }
+
+      setActiveSection(current)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  React.useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isMobileMenuOpen])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       const headerOffset = 80
-      const elementPosition = element.offsetTop
-      const offsetPosition = elementPosition - headerOffset
-
+      const offsetPosition = element.offsetTop - headerOffset
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       })
     }
     setIsMobileMenuOpen(false)
@@ -58,129 +66,100 @@ export function Navigation() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800" 
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-border/70 bg-background/80 shadow-sm backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between md:h-[4.5rem]">
+            <Link
+              href="#inicio"
+              onClick={() => scrollToSection("inicio")}
+              className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <Link 
-                href="#inicio" 
-                onClick={() => scrollToSection("inicio")}
-                className="flex items-center space-x-2"
-              >
-                <div className="w-10 h-10 rounded-xl overflow-hidden">
-                  <img 
-                    src="/icon.png" 
-                    alt="Brandon Romero" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="hidden sm:block font-bold text-xl text-gray-900 dark:text-white">
-                  Brandon
-                </span>
-              </Link>
-            </motion.div>
+              <BrandMark showName className="sm:gap-3" nameClassName="hidden text-lg sm:block" />
+            </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden items-center gap-1 lg:flex">
               {sections.map((section) => (
-                <motion.button
+                <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 relative ${
+                  className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                     activeSection === section.id
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+                      ? "text-accent"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {activeSection === section.id && (
-                    <motion.div
+                    <motion.span
                       layoutId="activeSection"
-                      className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 rounded-full"
-                      initial={false}
-                      transition={{ duration: 0.2 }}
+                      className="absolute inset-0 rounded-full bg-accent/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
                   <span className="relative z-10">{section.label}</span>
-                </motion.button>
+                </button>
               ))}
             </div>
 
-            {/* Right side actions */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-1.5">
               <ThemeToggle />
-              
-              {/* Mobile menu button */}
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
+                className="rounded-lg p-2 text-foreground transition-colors hover:bg-muted lg:hidden"
+                aria-expanded={isMobileMenuOpen}
+                aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
               >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </motion.button>
+                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden bg-white/95 dark:bg-neutral-950/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800"
-          >
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex flex-col space-y-4">
-                {sections.map((section, index) => (
-                  <motion.button
+          <>
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 z-30 bg-black/35 backdrop-blur-[2px] lg:hidden"
+              aria-label="Cerrar menú"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-16 right-0 left-0 z-40 border-b border-border bg-background/95 backdrop-blur-xl lg:hidden"
+            >
+              <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
+                {sections.map((section) => (
+                  <button
                     key={section.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
                     onClick={() => scrollToSection(section.id)}
-                    className={`text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                    className={`rounded-xl px-4 py-3 text-left text-base font-medium transition-colors ${
                       activeSection === section.id
-                        ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                        ? "bg-accent/10 text-accent"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     }`}
                   >
                     {section.label}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 z-30 bg-black/20 md:hidden"
-          />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

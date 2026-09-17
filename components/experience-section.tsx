@@ -1,6 +1,9 @@
 "use client"
+
 import { motion } from "framer-motion"
-import { Calendar, MapPin, Briefcase } from "lucide-react"
+import { Calendar } from "lucide-react"
+import { SectionHeading } from "@/components/section-heading"
+import { site } from "@/lib/site"
 
 const experiences = [
   {
@@ -10,34 +13,30 @@ const experiences = [
     description: "Frontend especializado en interfaces modernas y responsivas con tecnologías actuales.",
     technologies: ["React", "JavaScript", "CSS"],
     current: true,
-    color: "from-blue-500 to-blue-600"
   },
   {
     company: "Grupo AB (SKYDELIVER)",
-    role: "Desarrollador Web", 
+    role: "Desarrollador Web",
     period: "2025",
     description: "Desarrollo de plataforma web para gestión de pedidos con drones y API en tiempo real.",
     technologies: ["React", "Node.js", "MongoDB"],
     current: false,
-    color: "from-purple-500 to-purple-600"
   },
   {
     company: "AI KOI (Fundación)",
     role: "Desarrollador Web",
-    period: "2024", 
+    period: "2024",
     description: "Plataforma e-learning con módulos interactivos y pasarelas de pago automatizadas.",
     technologies: ["React", "TypeScript", "Next.js"],
     current: false,
-    color: "from-green-500 to-green-600"
   },
   {
     company: "Somos Brandon y Rubén TV",
-    role: "Creator de Contenido",
+    role: "Creador de Contenido",
     period: "Actualmente",
     description: "Videos de tecnología en YouTube con +900 seguidores y alta interacción.",
     technologies: ["YouTube", "Content"],
     current: true,
-    color: "from-red-500 to-red-600"
   },
   {
     company: "OPPO México",
@@ -46,121 +45,84 @@ const experiences = [
     description: "Creador de contenido oficial con participación en eventos y campañas exclusivas.",
     technologies: ["Marketing", "Reviews"],
     current: true,
-    color: "from-orange-500 to-orange-600"
-  }
+  },
 ]
 
 export function ExperienceSection() {
   return (
-    <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-950">
-      <div className="container mx-auto max-w-6xl">
-        
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="flex items-center justify-center mb-4">
-            <Briefcase className="h-6 w-6 text-blue-600 mr-3" />
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-              Experiencia Laboral
-            </h2>
-          </div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Mi trayectoria profesional abarca desarrollo web y creación de contenido tecnológico
-          </p>
-        </motion.div>
+    <section id="experiencia" className="section-shell bg-muted/40">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow="Trayectoria"
+          title="Experiencia laboral"
+          description="Mi trayectoria profesional abarca desarrollo web y creación de contenido tecnológico."
+        />
 
-        {/* Experience List */}
-        <div className="space-y-6">
+        <div className="relative space-y-4">
+          <div className="absolute top-3 bottom-3 left-[1.15rem] hidden w-px bg-border md:block" />
+
           {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.article
+              key={`${exp.company}-${exp.role}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="surface-card relative p-5 sm:p-6 md:pl-14"
             >
-              
-              {/* Experience Item */}
-              <div className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-lg transition-all duration-300 bg-gray-50/50 dark:bg-neutral-900/50">
-                
-                {/* Left Side - Company & Period */}
-                <div className="md:w-1/4 flex-shrink-0">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${exp.color}`}></div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                      {exp.company}
-                    </h3>
-                    {exp.current && (
-                      <span className="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-medium rounded-full">
+              <span className="absolute top-7 left-4 hidden h-3.5 w-3.5 rounded-full border-2 border-background bg-accent md:block" />
+
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <h3 className="text-lg font-semibold text-foreground">{exp.company}</h3>
+                    {exp.current ? (
+                      <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-emerald-700 uppercase dark:text-emerald-300">
                         Actual
                       </span>
-                    )}
+                    ) : null}
                   </div>
-                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                    <Calendar className="h-3 w-3 mr-2" />
-                    <span>{exp.period}</span>
-                  </div>
-                </div>
-                
-                {/* Middle - Role & Description */}
-                <div className="md:w-1/2 flex-grow">
-                  <p className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                    {exp.role}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="font-medium text-accent">{exp.role}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                     {exp.description}
                   </p>
                 </div>
-                
-                {/* Right Side - Technologies */}
-                <div className="md:w-1/4 flex-shrink-0">
-                  <div className="flex flex-wrap gap-1 justify-end">
-                    {exp.technologies.map((tech, techIndex) => (
+
+                <div className="flex flex-col gap-3 lg:items-end">
+                  <div className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>{exp.period}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 lg:justify-end">
+                    {exp.technologies.map((tech) => (
                       <span
-                        key={techIndex}
-                        className="px-2 py-1 bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded text-xs font-medium text-gray-700 dark:text-gray-300"
+                        key={tech}
+                        className="rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-                
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        {/* Compact Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center items-center gap-12 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
-        >
+        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border pt-8 sm:gap-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">2+</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">Años</p>
+            <p className="font-display text-2xl font-semibold text-accent">{site.stats.years}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Años</p>
           </div>
-          
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">10+</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">Proyectos</p>
+            <p className="font-display text-2xl font-semibold text-accent">{site.stats.projects}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Proyectos</p>
           </div>
-          
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-green-600 dark:text-green-400">900+</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">Seguidores</p>
+            <p className="font-display text-2xl font-semibold text-accent">{site.stats.subscribers}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Seguidores</p>
           </div>
-        </motion.div>
-
+        </div>
       </div>
     </section>
   )

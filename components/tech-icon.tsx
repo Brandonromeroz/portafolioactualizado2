@@ -1,16 +1,13 @@
-import { 
-  Code, 
-  Database, 
-  Palette, 
-  Globe, 
-  Smartphone, 
-  Video, 
-  Youtube, 
-  Figma as FigmaIcon,
+"use client"
+
+import {
+  Code,
+  Database,
+  Palette,
+  Globe,
   GitBranch,
   Container,
-  Flame,
-  Layers
+  Figma as FigmaIcon,
 } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -21,148 +18,113 @@ interface TechIconProps {
 }
 
 const techConfig = {
-  // Frontend
-  "html": { 
-    icon: Palette, 
+  html: {
+    icon: Palette,
     color: "text-orange-500",
-    hoverColor: "hover:text-orange-500 hover:bg-orange-500/10",
-    name: "HTML"
+    name: "HTML",
   },
-  "css": { 
-    icon: Palette, 
+  css: {
+    icon: Palette,
     color: "text-blue-500",
-    hoverColor: "hover:text-blue-500 hover:bg-blue-500/10",
-    name: "CSS"
+    name: "CSS",
   },
-  "javascript": { 
-    icon: Code, 
+  javascript: {
+    icon: Code,
     color: "text-yellow-500",
-    hoverColor: "hover:text-yellow-500 hover:bg-yellow-500/10",
-    name: "JavaScript"
+    name: "JavaScript",
   },
-  "typescript": { 
-    icon: Code, 
-    color: "text-blue-600",
-    hoverColor: "hover:text-blue-600 hover:bg-blue-600/10",
-    name: "TypeScript"
+  typescript: {
+    icon: Code,
+    color: "text-blue-600 dark:text-blue-400",
+    name: "TypeScript",
   },
-  "react": { 
-    icon: Code, 
-    color: "text-cyan-400",
-    hoverColor: "hover:text-cyan-400 hover:bg-cyan-400/10",
-    name: "React"
+  react: {
+    icon: Code,
+    color: "text-cyan-500",
+    name: "React",
   },
-  "nextjs": { 
-    icon: Globe, 
-    color: "text-gray-900 dark:text-white",
-    hoverColor: "hover:text-gray-900 hover:bg-gray-900/10 dark:hover:text-white dark:hover:bg-white/10",
-    name: "Next.js"
+  nextjs: {
+    icon: Globe,
+    color: "text-foreground",
+    name: "Next.js",
   },
-  "astro": { 
-    icon: Code, 
+  astro: {
+    icon: Code,
     color: "text-orange-500",
-    hoverColor: "hover:text-orange-500 hover:bg-orange-500/10",
-    name: "Astro"
+    name: "Astro",
   },
-
-  // Backend
-  "nodejs": { 
-    icon: Code, 
+  nodejs: {
+    icon: Code,
     color: "text-green-500",
-    hoverColor: "hover:text-green-500 hover:bg-green-500/10",
-    name: "Node.js"
+    name: "Node.js",
   },
-  "mongodb": { 
-    icon: Database, 
-    color: "text-green-600",
-    hoverColor: "hover:text-green-600 hover:bg-green-600/10",
-    name: "MongoDB"
+  mongodb: {
+    icon: Database,
+    color: "text-green-600 dark:text-green-400",
+    name: "MongoDB",
   },
-  "supabase": { 
-    icon: Database, 
+  supabase: {
+    icon: Database,
     color: "text-emerald-500",
-    hoverColor: "hover:text-emerald-500 hover:bg-emerald-500/10",
-    name: "Supabase"
+    name: "Supabase",
   },
-
-  // Styling
-  "tailwind": { 
-    icon: Palette, 
+  tailwind: {
+    icon: Palette,
     color: "text-teal-500",
-    hoverColor: "hover:text-teal-500 hover:bg-teal-500/10",
-    name: "Tailwind CSS"
+    name: "Tailwind CSS",
   },
-
-  // Tools
-  "figma": { 
-    icon: FigmaIcon, 
+  figma: {
+    icon: FigmaIcon,
     color: "text-pink-500",
-    hoverColor: "hover:text-pink-500 hover:bg-pink-500/10",
-    name: "Figma"
+    name: "Figma",
   },
-  "git": { 
-    icon: GitBranch, 
-    color: "text-orange-600",
-    hoverColor: "hover:text-orange-600 hover:bg-orange-600/10",
-    name: "Git"
+  git: {
+    icon: GitBranch,
+    color: "text-orange-600 dark:text-orange-400",
+    name: "Git",
   },
-  "docker": { 
-    icon: Container, 
-    color: "text-blue-600",
-    hoverColor: "hover:text-blue-600 hover:bg-blue-600/10",
-    name: "Docker"
+  docker: {
+    icon: Container,
+    color: "text-blue-600 dark:text-blue-400",
+    name: "Docker",
   },
-
-  // Legacy support
-  "vite": { 
-    icon: Code, 
+  vite: {
+    icon: Code,
     color: "text-purple-500",
-    hoverColor: "hover:text-purple-500 hover:bg-purple-500/10",
-    name: "Vite"
+    name: "Vite",
   },
-  "laravel": { 
-    icon: Code, 
-    color: "text-red-600",
-    hoverColor: "hover:text-red-600 hover:bg-red-600/10",
-    name: "Laravel"
+  laravel: {
+    icon: Code,
+    color: "text-red-600 dark:text-red-400",
+    name: "Laravel",
   },
 }
 
 export function TechIcon({ tech, className = "h-5 w-5", showLabel = false }: TechIconProps) {
   const config = techConfig[tech.toLowerCase() as keyof typeof techConfig]
-  
+
   if (!config) {
     return (
-      <motion.div 
-        whileHover={{ scale: 1.1 }}
-        className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-all duration-200 ${showLabel ? 'text-xs font-medium' : ''}`}
-      >
+      <span className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-1 text-muted-foreground">
         <Code className={className} />
-        {showLabel && <span>{tech}</span>}
-      </motion.div>
+        {showLabel ? <span className="text-xs font-medium">{tech}</span> : null}
+      </span>
     )
   }
-  
+
   const IconComponent = config.icon
-  
+
   if (showLabel) {
     return (
-      <motion.div 
-        whileHover={{ scale: 1.05 }}
-        className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 ${config.hoverColor} transition-all duration-200 text-sm font-medium cursor-pointer shadow-sm hover:shadow-md`}
+      <motion.span
+        whileHover={{ y: -2 }}
+        className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-2 text-sm font-medium text-foreground shadow-sm"
       >
         <IconComponent className={`${className} ${config.color}`} />
         <span>{config.name}</span>
-      </motion.div>
+      </motion.span>
     )
   }
-  
-  return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      className="inline-block"
-    >
-      <IconComponent className={`${className} ${config.color} transition-colors duration-200`} />
-    </motion.div>
-  )
+
+  return <IconComponent className={`${className} ${config.color}`} />
 }
