@@ -1,9 +1,10 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Poppins, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { site } from "@/lib/site"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,14 +20,24 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Brandon Romero Zavala | Ingeniero de Software y Creador de Contenido",
-  description: "Portafolio de Brandon Romero Zavala - Ingeniero de Software especializado en desarrollo web y creador de contenido tecnológico en YouTube",
-  generator: "v0.app",
+  metadataBase: new URL(site.url),
+  title: `${site.name} | ${site.headline}`,
+  description: `Portafolio de ${site.name} - Ingeniero de Software especializado en desarrollo web y creador de contenido tecnológico en YouTube`,
   openGraph: {
-    title: "Brandon Romero Zavala | Ingeniero de Software y Creador de Contenido",
-    description: "Desarrollador Full Stack y Creador de Contenido Tech con +966 suscriptores",
+    title: `${site.name} | ${site.headline}`,
+    description: `Desarrollador Full Stack y Creador de Contenido Tech con +${site.stats.subscribers.replace("+", "")} suscriptores`,
     type: "website",
+    locale: "es_MX",
+    url: site.url,
+    siteName: site.name,
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f8fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#12141c" },
+  ],
 }
 
 export default function RootLayout({

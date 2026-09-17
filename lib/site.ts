@@ -1,0 +1,26 @@
+export const site = {
+  name: "Brandon Romero Zavala",
+  shortName: "Brandon Romero",
+  firstName: "Brandon",
+  role: "Desarrollador & Creador de Contenido",
+  headline: "Ingeniero de Software y Creador de Contenido",
+  description:
+    "Ingeniero de Software especializado en desarrollo web moderno. Construyo experiencias digitales innovadoras y comparto conocimiento con la comunidad.",
+  email: "romerozavalabrandon@gmail.com",
+  phoneDisplay: "+52 729 895 8841",
+  whatsapp: "https://wa.me/527298958841",
+  location: "Ecatepec de Morelos",
+  youtube: "https://www.youtube.com/@BrandonYRubenTV",
+  youtubeName: "Somos Brandon y Rubén TV",
+  github: "https://github.com/Brandonromeroz",
+  linkedin: "https://www.linkedin.com/in/brandon-romero-zavala-8247a6267",
+  cvPath: "/Cv BrandonRomeroZ.pdf",
+  cvDownloadName: "CV_Brandon_Romero_Zavala.pdf",
+  photo: "/devbran.jpg",
+  url: "https://portfoliobrandondev.vercel.app",
+  stats: {
+    years: "2+",
+    projects: "10+",
+    subscribers: "900+",
+  },
+} as const
