@@ -1,15 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Mail, Linkedin, Github, Youtube, Send, MessageCircle, CheckCircle2 } from "lucide-react"
-import { motion } from "framer-motion"
+import { Mail, Linkedin, Github, Send, MessageCircle, CheckCircle2, Download } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-import { site } from "@/lib/site"
+import { featuredProjects, isAppStoreProject, site } from "@/lib/site"
 
 const socialLinks = [
   { icon: Github, href: site.github, label: "GitHub" },
   { icon: Linkedin, href: site.linkedin, label: "LinkedIn" },
-  { icon: Youtube, href: site.youtube, label: "YouTube" },
   { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
 ]
 
@@ -20,6 +19,8 @@ export function ContactSection() {
     message: "",
   })
   const [submitted, setSubmitted] = React.useState(false)
+  const reduceMotion = useReducedMotion()
+  const storeProjects = featuredProjects.filter(isAppStoreProject)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,27 +50,27 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Contacto"
-          title="Creemos algo juntos"
-          description="¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a hacerlo realidad."
+          title="Hablemos"
+          description="Para trabajo, código o las apps del App Store: GitHub, LinkedIn, correo o el CV."
         />
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: reduceMotion ? 0 : 0.45 }}
             className="surface-card p-6 sm:p-8"
           >
             <div className="mb-6 flex items-center gap-3">
-              <MessageCircle className="h-5 w-5 text-accent" />
-              <h3 className="text-xl font-semibold text-foreground sm:text-2xl">Envíame un mensaje</h3>
+              <MessageCircle className="h-5 w-5 text-accent" aria-hidden />
+              <h3 className="text-xl font-semibold text-foreground sm:text-2xl">Escribir</h3>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-semibold text-foreground">
-                  Nombre completo
+                  Nombre
                 </label>
                 <input
                   type="text"
@@ -112,49 +113,48 @@ export function ContactSection() {
                   onChange={handleInputChange}
                   rows={5}
                   className={`${fieldClass} resize-none`}
-                  placeholder="Cuéntame sobre tu proyecto..."
+                  placeholder="En qué puedo ayudarte"
                   required
                 />
               </div>
 
               {submitted ? (
-                <p className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
-                  <CheckCircle2 className="h-4 w-4" />
+                <p className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400" role="status">
+                  <CheckCircle2 className="h-4 w-4" aria-hidden />
                   Se abrió tu cliente de correo. Si no ves nada, escríbeme a {site.email}.
                 </p>
               ) : null}
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <Send className="h-5 w-5" />
+                <Send className="h-5 w-5" aria-hidden />
                 Enviar mensaje
               </button>
             </form>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.08 }}
+            transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : 0.08 }}
             className="space-y-8"
           >
             <div>
-              <h3 className="mb-4 text-2xl font-semibold text-foreground sm:text-3xl">Conectemos</h3>
+              <h3 className="mb-4 text-2xl font-semibold text-foreground sm:text-3xl">Enlaces</h3>
               <p className="leading-relaxed text-muted-foreground">
-                Estoy siempre abierto a discutir nuevos proyectos, oportunidades creativas o simplemente
-                charlar sobre tecnología y desarrollo.
+                CV, código y las fichas públicas de las apps en las que participé con el equipo.
               </p>
             </div>
 
             <div className="space-y-3">
               <a
                 href={`mailto:${site.email}`}
-                className="surface-card flex items-center gap-4 p-4 hover:shadow-md"
+                className="surface-card flex items-center gap-4 p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <Mail className="h-6 w-6 shrink-0 text-red-500" />
+                <Mail className="h-6 w-6 shrink-0 text-red-500" aria-hidden />
                 <span>
                   <span className="block font-semibold text-foreground">Email</span>
                   <span className="break-all text-sm text-muted-foreground">{site.email}</span>
@@ -162,21 +162,36 @@ export function ContactSection() {
               </a>
 
               <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="surface-card flex items-center gap-4 p-4 hover:shadow-md"
+                href={site.cvPath}
+                download={site.cvDownloadName}
+                className="surface-card flex items-center gap-4 p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <MessageCircle className="h-6 w-6 shrink-0 text-emerald-500" />
+                <Download className="h-6 w-6 shrink-0 text-accent" aria-hidden />
                 <span>
-                  <span className="block font-semibold text-foreground">WhatsApp</span>
-                  <span className="text-sm text-muted-foreground">{site.phoneDisplay}</span>
+                  <span className="block font-semibold text-foreground">CV</span>
+                  <span className="text-sm text-muted-foreground">{site.cvDownloadName}</span>
                 </span>
               </a>
+
+              {storeProjects.map((project) => (
+                <a
+                  key={project.id}
+                  href={project.storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="surface-card flex items-center gap-4 p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <ExternalStoreIcon />
+                  <span>
+                    <span className="block font-semibold text-foreground">{project.title}</span>
+                    <span className="text-sm text-muted-foreground">View on App Store</span>
+                  </span>
+                </a>
+              ))}
             </div>
 
             <div>
-              <h4 className="mb-4 text-lg font-semibold text-foreground">Sígueme en redes</h4>
+              <h4 className="mb-4 text-lg font-semibold text-foreground">Perfiles</h4>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -185,24 +200,27 @@ export function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="surface-card flex h-12 w-12 items-center justify-center text-muted-foreground hover:text-foreground"
+                    className="surface-card flex h-12 w-12 items-center justify-center text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     <social.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
             </div>
-
-            <div className="rounded-2xl border border-accent/20 bg-accent/10 p-5">
-              <div className="mb-1 flex items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                <p className="font-semibold text-foreground">Respuesta rápida</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Normalmente respondo en menos de 24 horas.</p>
-            </div>
           </motion.div>
         </div>
       </div>
     </section>
+  )
+}
+
+function ExternalStoreIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0 text-foreground" aria-hidden>
+      <path
+        fill="currentColor"
+        d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+      />
+    </svg>
   )
 }

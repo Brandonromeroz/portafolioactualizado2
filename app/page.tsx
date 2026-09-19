@@ -1,31 +1,33 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
-import { TechnologiesLoop } from "@/components/technologies-loop"
-import { ExperienceSection } from "@/components/experience-section"
-import { CollaborationsSection } from "@/components/collaborations-section"
 import { ProjectsSection } from "@/components/projects-section"
-import { ServicesSection } from "@/components/services-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
+import { ExperienceSection } from "@/components/experience-section"
+import { SkillsSection } from "@/components/skills-section"
+import { AboutSection } from "@/components/about-section"
+import { EducationSection } from "@/components/education-section"
 import { ContactSection } from "@/components/contact-section"
-import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main className="relative">
+    <>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Saltar al contenido
+      </a>
       <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <TechnologiesLoop />
-      <ExperienceSection />
-      <CollaborationsSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <CTASection />
+      <main id="contenido" className="relative">
+        <HeroSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <SkillsSection />
+        <AboutSection />
+        <EducationSection />
+        <ContactSection />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

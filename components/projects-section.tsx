@@ -1,152 +1,109 @@
 "use client"
 
-import { Github, ExternalLink } from "lucide-react"
-import { motion } from "framer-motion"
-import { TechIcon } from "@/components/tech-icon"
-import Image from "next/image"
+import { ExternalLink, MonitorSmartphone } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-
-const techLabels: Record<string, string> = {
-  nextjs: "Next.js",
-  nodejs: "Node.js",
-  mongodb: "MongoDB",
-  tailwind: "Tailwind",
-  maps: "Maps API",
-  stripe: "Stripe",
-  supabase: "Supabase",
-}
-
-const projects = [
-  {
-    id: 1,
-    title: "ComeBarato MX",
-    description:
-      "Plataforma de delivery moderna con geolocalización en tiempo real, sistema de pagos integrado y panel administrativo completo. Construida con React y Node.js.",
-    technologies: ["react", "nodejs", "mongodb", "stripe", "tailwind"],
-    category: "E-commerce",
-    status: "Completado",
-    year: "2024",
-    image: "/310shots_so.png",
-    liveUrl: "https://comebaratomx.netlify.app/",
-    githubUrl: "",
-  },
-  {
-    id: 2,
-    title: "SKYDELIVER",
-    description:
-      "Sistema integral de gestión de delivery con tracking en tiempo real, optimización de rutas y analytics avanzados para restaurantes y empresas.",
-    technologies: ["nextjs", "typescript", "mongodb", "tailwind", "maps"],
-    category: "SaaS",
-    status: "Completado",
-    year: "2024",
-    image: "/411shots_so.png",
-    liveUrl: "https://skydeliver.netlify.app/",
-    githubUrl: "",
-  },
-  {
-    id: 3,
-    title: "Biblioteca Digital",
-    description:
-      "Plataforma educativa con sistema de préstamos digitales, catálogo interactivo y gestión de usuarios. Optimizada para instituciones educativas.",
-    technologies: ["nextjs", "astro", "tailwind", "supabase"],
-    category: "Educación",
-    status: "Completado",
-    year: "2023",
-    image: "/912shots_so.png",
-    liveUrl: "https://bibliotecaupt.netlify.app/",
-    githubUrl: "https://github.com/Brandonromeroz/Biblioteca-Digital",
-  },
-]
+import { PhoneMockupRow } from "@/components/phone-mockup"
+import { featuredProjects } from "@/lib/site"
 
 export function ProjectsSection() {
+  const reduceMotion = useReducedMotion()
+
   return (
-    <section id="proyectos" className="section-shell bg-muted/40">
+    <section id="proyectos" className="section-shell bg-muted/30">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Trabajo"
-          title="Proyectos"
-          description="Algunos proyectos destacados en los que he trabajado, desde aplicaciones web hasta plataformas completas de e-commerce y SaaS."
+          eyebrow="Proyectos"
+          title="Apps en el App Store y un SaaS en curso"
+          description="Los protagonistas son productos móviles publicados con el equipo de Black Sheep Labs. Los mockups están listos para capturas reales — no hay pantallas inventadas."
         />
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {projects.map((project, index) => (
-            <motion.article
-              key={project.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="surface-card group flex h-full flex-col overflow-hidden hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                <Image
-                  src={project.image}
-                  alt={`Captura de ${project.title}`}
-                  width={700}
-                  height={400}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
+        <div className="space-y-10 lg:space-y-16">
+          {featuredProjects.map((project, index) => {
+            const isMobile = project.kind === "mobile"
 
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <h3 className="text-xl font-semibold text-foreground sm:text-2xl">{project.title}</h3>
-                  <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
-                    {project.year}
-                  </span>
-                </div>
-                <div className="mb-4 flex flex-wrap items-center gap-2 text-sm">
-                  <span className="text-muted-foreground">{project.category}</span>
-                  <span className="h-1 w-1 rounded-full bg-emerald-500" />
-                  <span className="font-medium text-emerald-600 dark:text-emerald-400">{project.status}</span>
-                </div>
-                <p className="mb-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {project.description}
-                </p>
-
-                <div className="mt-auto space-y-5">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground"
+            return (
+              <motion.article
+                key={project.id}
+                initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
+                className="surface-card overflow-hidden p-6 sm:p-8 lg:p-10"
+              >
+                <div
+                  className={
+                    isMobile
+                      ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12"
+                      : "grid items-center gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]"
+                  }
+                >
+                  <div className={isMobile ? "order-2 lg:order-none" : "order-2"}>
+                    {isMobile ? (
+                      <PhoneMockupRow
+                        title={project.title}
+                        slots={project.mockupSlots}
+                        screenshots={project.screenshots}
+                      />
+                    ) : (
+                      <div
+                        className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 px-6 text-center"
+                        role="img"
+                        aria-label={`Espacio de mockup web para ${project.title}`}
                       >
-                        {tech !== "maps" && tech !== "stripe" && tech !== "supabase" ? (
-                          <TechIcon tech={tech} className="h-3.5 w-3.5" />
-                        ) : null}
-                        {techLabels[tech] ?? tech.charAt(0).toUpperCase() + tech.slice(1)}
+                        <MonitorSmartphone className="mb-3 h-8 w-8 text-muted-foreground" aria-hidden />
+                        <p className="text-[10px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+                          Mockup web
+                        </p>
+                        <p className="mt-2 max-w-xs text-sm text-muted-foreground">{project.mockupSlots[0]}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="order-1 min-w-0 lg:order-none">
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-emerald-700 uppercase dark:text-emerald-300">
+                        {project.badge}
                       </span>
-                    ))}
-                  </div>
+                      <span className="text-sm text-muted-foreground">{project.subtitle}</span>
+                    </div>
 
-                  <div className="flex gap-2">
-                    {project.githubUrl ? (
+                    <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {project.description}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.attribution}</p>
+
+                    <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={`Tecnologías de ${project.title}`}>
+                      {project.technologies.map((tech) => (
+                        <li
+                          key={tech}
+                          className="rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground"
+                        >
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {project.storeUrl ? (
                       <a
-                        href={project.githubUrl}
+                        href={project.storeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
-                        <Github className="h-4 w-4" />
-                        Código
-                      </a>
-                    ) : null}
-                    {project.liveUrl ? (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Ver proyecto
+                        <ExternalLink className="h-4 w-4" aria-hidden />
+                        {project.storeLabel}
                       </a>
                     ) : null}
                   </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            )
+          })}
         </div>
       </div>
     </section>
