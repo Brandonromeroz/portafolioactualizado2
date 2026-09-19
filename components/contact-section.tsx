@@ -145,7 +145,7 @@ export function ContactSection() {
             <div>
               <h3 className="mb-4 text-2xl font-semibold text-foreground sm:text-3xl">Enlaces</h3>
               <p className="leading-relaxed text-muted-foreground">
-                CV, código y las fichas públicas de las apps en las que participé con el equipo.
+                CV, código y las apps que construyo — publicadas en el App Store.
               </p>
             </div>
 

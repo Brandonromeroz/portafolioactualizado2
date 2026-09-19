@@ -14,8 +14,8 @@ export function AboutSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Sobre mí"
-          title="Interfaces y apps, sin rodeos"
-          description="Un perfil corto y concreto: software, producto digital y mobile."
+          title="Web, mobile y producto"
+          description="Un perfil concreto: fullstack, apps en producción y software que se usa."
         />
 
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">

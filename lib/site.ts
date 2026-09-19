@@ -3,13 +3,13 @@ export const site = {
   legalName: "Brandon Romero Zavala",
   shortName: "Brandon Romero",
   firstName: "Brandon",
-  role: "Software Engineer",
-  focus: "Frontend + Mobile",
-  subtitle: "Building modern web & mobile experiences with React and React Native.",
+  role: "Full Stack Software Engineer",
+  focus: "Web + Mobile",
+  subtitle: "Building modern web and mobile products with React, React Native, APIs, and PostgreSQL.",
   description:
-    "Software Engineer focused on frontend and mobile — React, React Native, and Expo. Currently at Black Sheep, working on published App Store apps with the team.",
+    "Full Stack Software Engineer — web and mobile. I build products with React, React Native, Expo, APIs, PostgreSQL, and Docker. Currently at Black Sheep, shipping apps on the App Store.",
   descriptionEs:
-    "Software Engineer enfocado en frontend y mobile. Interfaces web y apps iOS/Android con React, React Native y Expo. Actualmente en Black Sheep.",
+    "Full Stack Software Engineer. Productos web y apps iOS/Android con React, React Native, Expo, APIs y PostgreSQL. Actualmente en Black Sheep.",
   email: "romerozavalabrandon@gmail.com",
   phoneDisplay: "+52 729 895 8841",
   whatsapp: "https://wa.me/527298958841",
@@ -22,7 +22,7 @@ export const site = {
   cvDownloadName: "CV_Brandon_Romero_Zavala.pdf",
   photo: "/devbran.jpg",
   url: "https://portfoliobrandondev.vercel.app",
-  title: "Brandon Romero — Software Engineer",
+  title: "Brandon Romero — Full Stack Software Engineer",
 } as const
 
 export const appStoreUrls = {
@@ -43,12 +43,12 @@ export const experience = [
   {
     company: "Black Sheep",
     team: "Black Sheep Labs",
-    role: "Software Engineer",
+    role: "Full Stack Software Engineer",
     period: "Octubre 2025 — Presente",
     current: true,
     description:
-      "Participo en el equipo en interfaces web y apps iOS/Android. Trabajo con React, React Native y Expo, integración de APIs, PostgreSQL y Docker, y en el mantenimiento de productos en producción: nuevas funcionalidades y corrección de errores.",
-    technologies: ["React", "React Native", "Expo", "TypeScript", "PostgreSQL", "Docker"],
+      "En Black Sheep Labs construyo productos web y móviles de punta a punta: interfaces en React, apps iOS/Android con React Native y Expo, APIs, PostgreSQL y Docker. Entrego funcionalidades en producción y mantengo las apps publicadas en el App Store.",
+    technologies: ["React", "React Native", "Expo", "TypeScript", "APIs", "PostgreSQL", "Docker"],
   },
 ] as const
 
@@ -61,7 +61,8 @@ export type FeaturedProject = {
   subtitle: string
   badge: string
   description: string
-  attribution: string
+  company?: string
+  logo?: string
   technologies: readonly string[]
   storeUrl?: string
   storeLabel?: string
@@ -77,9 +78,8 @@ export const featuredProjects: readonly FeaturedProject[] = [
     subtitle: "Mobile App · iOS / Android",
     badge: "Live on App Store",
     description:
-      "App de redes sociales para colaboración en producción audiovisual. La ficha pública describe perfiles por especialidad, convocatorias, organización de equipos, seguimiento de tareas, comunicación interna, notificaciones, bookmarks y mensajes. Disponible para iPhone, iPad y Apple Watch. © Black Sheep Labs.",
-    attribution:
-      "Producto del equipo Black Sheep Labs. Participé como Software Engineer / Mobile Developer — no soy el autor único.",
+      "Red social para profesionales de la industria audiovisual: perfiles por especialidad, convocatorias, equipos de producción, tareas, chat y notificaciones. Publicada en el App Store para iPhone, iPad y Apple Watch.",
+    company: "Black Sheep Labs",
     technologies: [
       "React Native",
       "Expo",
@@ -93,8 +93,14 @@ export const featuredProjects: readonly FeaturedProject[] = [
     ],
     storeUrl: appStoreUrls.hagamosCine,
     storeLabel: "View on App Store",
-    mockupSlots: ["Pantalla 1", "Pantalla 2", "Pantalla 3"],
-    screenshots: [],
+    mockupSlots: ["Red profesional", "Oportunidades", "Perfiles"],
+    screenshots: [
+      "/projects/hagamos-cine/hagamos-1.jpg",
+      "/projects/hagamos-cine/hagamos-2.jpg",
+      "/projects/hagamos-cine/hagamos-3.jpg",
+      "/projects/hagamos-cine/hagamos-4.jpg",
+      "/projects/hagamos-cine/hagamos-5.jpg",
+    ],
   },
   {
     id: "red-mexico-emprende",
@@ -103,9 +109,8 @@ export const featuredProjects: readonly FeaturedProject[] = [
     subtitle: "Mobile App · iOS / Android",
     badge: "Live on App Store",
     description:
-      "App de networking para emprendedores de la Red Nacional México Emprende. La ficha pública incluye comunidad, eventos, membresías, boletería con QR, cursos, blogs, TV en vivo, revistas digitales y directorio de empresas. Disponible para iPhone e iPad; compatible con Wallet. © Black Sheep Labs.",
-    attribution:
-      "Producto del equipo Black Sheep Labs. Participé como Software Engineer / Mobile Developer — no soy el autor único.",
+      "App de networking para la Red Nacional México Emprende. Comunidad, eventos, membresías, boletos con QR, cursos, TV en vivo y directorio de empresas. En el App Store, con Apple Wallet y Google Wallet.",
+    company: "Black Sheep Labs",
     technologies: [
       "React Native",
       "Expo",
@@ -120,8 +125,13 @@ export const featuredProjects: readonly FeaturedProject[] = [
     ],
     storeUrl: appStoreUrls.redMexicoEmprende,
     storeLabel: "View on App Store",
-    mockupSlots: ["Pantalla 1", "Pantalla 2", "Pantalla 3"],
-    screenshots: [],
+    mockupSlots: ["Inicio", "Mensajes", "Eventos"],
+    screenshots: [
+      "/projects/rnme/rnme-1.jpg",
+      "/projects/rnme/rnme-2.jpg",
+      "/projects/rnme/rnme-3.jpg",
+      "/projects/rnme/rnme-4.jpg",
+    ],
   },
   {
     id: "hum",
@@ -130,11 +140,11 @@ export const featuredProjects: readonly FeaturedProject[] = [
     subtitle: "SaaS · En desarrollo",
     badge: "In progress",
     description:
-      "Plataforma SaaS de gestión multiempresa. En desarrollo con Next.js, React, TypeScript, Tailwind CSS y PostgreSQL.",
-    attribution: "Producto en construcción. Solo se listan el propósito y el stack confirmados.",
+      "SaaS de gestión multiempresa. Lo construyo con Next.js, React, TypeScript, Tailwind CSS y PostgreSQL — interfaz, API y datos en el mismo ciclo.",
+    logo: "/projects/hum/hum-logo.png",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"],
-    mockupSlots: ["Interfaz web"],
-    screenshots: [],
+    mockupSlots: ["Landing"],
+    screenshots: ["/projects/hum/hum-landing-1.png"],
   },
 ] as const
 
@@ -148,8 +158,8 @@ export const skillCategories = [
     items: ["React Native", "Expo", "iOS", "Android"],
   },
   {
-    name: "Backend / Data",
-    items: ["PostgreSQL", "APIs", "JWT"],
+    name: "Backend",
+    items: ["APIs", "PostgreSQL", "JWT"],
   },
   {
     name: "Tools",
@@ -164,8 +174,8 @@ export const education = {
 } as const
 
 export const aboutParagraphs = [
-  "Soy Software Engineer. Me gusta construir productos digitales, sobre todo interfaces y aplicaciones móviles.",
-  "Hoy me enfoco en React, React Native y Expo: web, iOS y Android. También trabajo con TypeScript, PostgreSQL y Docker cuando el producto lo pide. El backend no es el centro de mi perfil.",
+  "Soy Full Stack Software Engineer. Diseño y construyo productos digitales — web, mobile y la capa de datos que los sostiene.",
+  "Trabajo con React, React Native y Expo, y cierro el ciclo con TypeScript, APIs, PostgreSQL y Docker.",
 ] as const
 
 export const heroButtons = [
