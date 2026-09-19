@@ -1,9 +1,9 @@
 "use client"
 
-import { ExternalLink, MonitorSmartphone } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-import { PhoneMockupRow } from "@/components/phone-mockup"
+import { PhoneMockupRow, SaasMockup } from "@/components/phone-mockup"
 import { featuredProjects } from "@/lib/site"
 
 export function ProjectsSection() {
@@ -15,7 +15,7 @@ export function ProjectsSection() {
         <SectionHeading
           eyebrow="Proyectos"
           title="Apps en el App Store y un SaaS en curso"
-          description="Los protagonistas son productos móviles publicados con el equipo de Black Sheep Labs. Los mockups están listos para capturas reales — no hay pantallas inventadas."
+          description="Apps publicadas en el App Store y un SaaS en desarrollo. Productos reales, con capturas oficiales."
         />
 
         <div className="space-y-10 lg:space-y-16">
@@ -46,17 +46,11 @@ export function ProjectsSection() {
                         screenshots={project.screenshots}
                       />
                     ) : (
-                      <div
-                        className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-500/60 bg-zinc-900/40 px-6 text-center"
-                        role="img"
-                        aria-label={`Espacio de mockup web para ${project.title}`}
-                      >
-                        <MonitorSmartphone className="mb-3 h-8 w-8 text-muted-foreground" aria-hidden />
-                        <p className="text-[10px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-                          Mockup web
-                        </p>
-                        <p className="mt-2 max-w-xs text-sm text-muted-foreground">{project.mockupSlots[0]}</p>
-                      </div>
+                      <SaasMockup
+                        title={project.title}
+                        screenshot={project.screenshots[0]}
+                        logo={project.logo}
+                      />
                     )}
                   </div>
 
@@ -75,7 +69,9 @@ export function ProjectsSection() {
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                       {project.description}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.attribution}</p>
+                    {project.company ? (
+                      <p className="mt-3 text-sm font-medium text-foreground/80">{project.company}</p>
+                    ) : null}
 
                     <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={`Tecnologías de ${project.title}`}>
                       {project.technologies.map((tech) => (

@@ -13,7 +13,7 @@ export function SkillsSection() {
         <SectionHeading
           eyebrow="Stack"
           title="Habilidades"
-          description="Categorías que uso en el día a día. Frontend y mobile primero; datos y herramientas como apoyo."
+          description="El stack que uso para entregar producto: frontend, mobile, APIs y datos."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
