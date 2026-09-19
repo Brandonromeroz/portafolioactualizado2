@@ -142,6 +142,11 @@
     background: color-mix(in oklch, var(--accent) 28%, transparent);
     color: var(--foreground);
   }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
@@ -180,7 +185,18 @@
     scroll-behavior: auto;
   }
 
-  .animate-marquee {
+  .animate-marquee,
+  .animate-ping,
+  .animate-bounce {
     animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,141 +1,46 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { TechIcon } from "./tech-icon"
-import { YouTubeCounter } from "./youtube-counter"
+import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-
-const technologies = [
-  "react",
-  "nextjs",
-  "typescript",
-  "javascript",
-  "nodejs",
-  "mongodb",
-  "tailwind",
-  "figma",
-  "astro",
-  "git",
-  "docker",
-]
-
-const experience = [
-  {
-    company: "SKYDELIVER",
-    role: "Desarrollador Full-Stack",
-    period: "2024 — Presente",
-    description:
-      "Desarrollo de plataforma de delivery con React, Node.js y MongoDB. Implementación de sistema de pagos y geolocalización.",
-    logo: "🚀",
-  },
-  {
-    company: "AI KOI",
-    role: "Desarrollador Frontend",
-    period: "2023 — 2024",
-    description:
-      "Desarrollo de interfaces de IA conversacional con React y TypeScript. Integración de APIs de machine learning.",
-    logo: "🤖",
-  },
-  {
-    company: "OPPO México",
-    role: "Desarrollador Web",
-    period: "2023 — 2024",
-    description:
-      "Desarrollo de landing pages y campañas digitales para productos móviles. Optimización SEO y performance.",
-    logo: "📱",
-  },
-]
-
-const designProcess = [
-  {
-    number: "01",
-    title: "Análisis",
-    description: "Comprendo los requisitos del proyecto y defino objetivos claros para crear la mejor solución.",
-  },
-  {
-    number: "02",
-    title: "Diseño",
-    description: "Creo wireframes y prototipos funcionales enfocados en la experiencia del usuario.",
-  },
-  {
-    number: "03",
-    title: "Desarrollo",
-    description: "Implemento el diseño con código limpio, optimizado y siguiendo las mejores prácticas.",
-  },
-  {
-    number: "04",
-    title: "Optimización",
-    description: "Pruebo, optimizo el rendimiento y aseguro la compatibilidad en todos los dispositivos.",
-  },
-]
+import { skillCategories } from "@/lib/site"
 
 export function SkillsSection() {
+  const reduceMotion = useReducedMotion()
+
   return (
-    <section className="section-shell bg-background">
-      <div className="mx-auto max-w-4xl">
+    <section id="habilidades" className="section-shell bg-muted/30">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
-          title="Un desarrollador creativo y diseñador digital"
-          description="Colaboro con marcas globalmente para diseñar sitios web impactantes y enfocados en la misión que generen resultados y alcancen objetivos de negocio."
+          eyebrow="Stack"
+          title="Habilidades"
+          description="Categorías que uso en el día a día. Frontend y mobile primero; datos y herramientas como apoyo."
         />
 
-        <div className="mb-16 flex flex-wrap justify-center gap-3">
-          {technologies.map((tech) => (
-            <TechIcon
-              key={tech}
-              tech={tech}
-              className="h-10 w-10 rounded-xl border border-border bg-muted/50 p-2"
-            />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {skillCategories.map((category, index) => (
+            <motion.article
+              key={category.name}
+              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : index * 0.05 }}
+              className="surface-card p-5 sm:p-6"
+            >
+              <h3 className="mb-4 text-sm font-semibold tracking-[0.16em] text-accent uppercase">
+                {category.name}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {category.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full border border-border bg-background px-3 py-1.5 text-sm text-foreground"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
           ))}
-        </div>
-
-        <div className="mb-16">
-          <h3 className="mb-8 text-center text-2xl font-semibold text-foreground">Experiencia</h3>
-          <div className="space-y-4">
-            {experience.map((exp, index) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="surface-card flex gap-5 p-5"
-              >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-muted text-2xl">
-                  {exp.logo}
-                </div>
-                <div className="min-w-0">
-                  <div className="mb-1 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                    <h4 className="text-lg font-semibold text-foreground">{exp.role}</h4>
-                    <span className="text-sm text-muted-foreground">{exp.period}</span>
-                  </div>
-                  <p className="mb-1 font-medium text-muted-foreground">@{exp.company}</p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{exp.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-16">
-          <h3 className="mb-8 text-center text-2xl font-semibold text-foreground">Mi proceso de diseño</h3>
-          <div className="grid gap-6 md:grid-cols-2">
-            {designProcess.map((step) => (
-              <div key={step.number} className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                  <span className="text-sm font-bold text-accent">{step.number}</span>
-                </div>
-                <div>
-                  <h4 className="mb-1 text-lg font-semibold text-foreground">{step.title}</h4>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mx-auto max-w-md">
-          <h3 className="mb-6 text-center text-2xl font-semibold text-foreground">Creando contenido</h3>
-          <YouTubeCounter />
         </div>
       </div>
     </section>

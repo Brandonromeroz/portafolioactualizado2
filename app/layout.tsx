@@ -21,15 +21,54 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name} | ${site.headline}`,
-  description: `Portafolio de ${site.name} - Ingeniero de Software especializado en desarrollo web y creador de contenido tecnológico en YouTube`,
+  title: {
+    default: site.title,
+    template: `%s · ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.legalName, url: site.url }],
+  creator: site.legalName,
+  keywords: [
+    "Brandon Romero",
+    "Software Engineer",
+    "React",
+    "React Native",
+    "Expo",
+    "Frontend",
+    "Mobile",
+    "iOS",
+    "Android",
+  ],
+  alternates: {
+    canonical: site.url,
+  },
   openGraph: {
-    title: `${site.name} | ${site.headline}`,
-    description: `Desarrollador Full Stack y Creador de Contenido Tech con +${site.stats.subscribers.replace("+", "")} suscriptores`,
+    title: site.title,
+    description: site.description,
     type: "website",
     locale: "es_MX",
     url: site.url,
     siteName: site.name,
+    images: [
+      {
+        url: site.photo,
+        alt: site.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: site.title,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 }
 
@@ -48,7 +87,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
         <Analytics />
