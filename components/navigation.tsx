@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react"
 import { navItems } from "@/lib/site"
 
 export function Navigation() {
-  const [activeSection, setActiveSection] = React.useState("inicio")
+  const [activeSection, setActiveSection] = React.useState<(typeof navItems)[number]["id"]>("inicio")
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const reduceMotion = useReducedMotion()
@@ -19,7 +19,7 @@ export function Navigation() {
       setIsScrolled(window.scrollY > 12)
 
       const scrollPosition = window.scrollY + 120
-      let current = navItems[0].id
+      let current: (typeof navItems)[number]["id"] = navItems[0].id
 
       for (const section of navItems) {
         const element = document.getElementById(section.id)

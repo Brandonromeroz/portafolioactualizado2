@@ -5,7 +5,17 @@ import nextTs from "eslint-config-next/typescript"
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "node_modules/**"]),
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "node_modules/**",
+    "components/ui/**",
+    "hooks/**",
+    "components/LogoLoop.jsx",
+    "components/tech-icons.tsx",
+  ]),
 ])
 
 export default eslintConfig
