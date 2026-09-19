@@ -123,11 +123,13 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     overflow-x: hidden;
+    max-width: 100%;
   }
 
   h1,
@@ -155,7 +157,7 @@
   }
 
   .section-shell {
-    @apply scroll-mt-24 px-4 py-20 sm:scroll-mt-28 sm:px-6 sm:py-28 lg:px-8 lg:py-32;
+    @apply scroll-mt-24 overflow-x-clip px-4 py-20 sm:scroll-mt-28 sm:px-6 sm:py-28 lg:px-8 lg:py-32;
   }
 
   .surface-card {

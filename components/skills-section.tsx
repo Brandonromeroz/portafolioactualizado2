@@ -11,9 +11,9 @@ export function SkillsSection() {
     <section id="habilidades" className="section-shell bg-muted/30">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Stack"
+          eyebrow="Tecnologías"
           title="Habilidades"
-          description="El stack que uso para entregar producto: frontend, mobile, APIs y datos."
+          description="El stack que uso para entregar producto: frontend, móvil, APIs y datos."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

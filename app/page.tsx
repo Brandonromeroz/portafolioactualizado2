@@ -5,6 +5,7 @@ import { ExperienceSection } from "@/components/experience-section"
 import { SkillsSection } from "@/components/skills-section"
 import { AboutSection } from "@/components/about-section"
 import { EducationSection } from "@/components/education-section"
+import { YouTubeSection } from "@/components/youtube-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -18,13 +19,14 @@ export default function Home() {
         Saltar al contenido
       </a>
       <Navigation />
-      <main id="contenido" className="relative">
+      <main id="contenido" className="relative overflow-x-clip">
         <HeroSection />
         <ProjectsSection />
         <ExperienceSection />
         <SkillsSection />
         <AboutSection />
         <EducationSection />
+        <YouTubeSection />
         <ContactSection />
       </main>
       <Footer />

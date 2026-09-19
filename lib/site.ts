@@ -3,13 +3,13 @@ export const site = {
   legalName: "Brandon Romero Zavala",
   shortName: "Brandon Romero",
   firstName: "Brandon",
-  role: "Full Stack Software Engineer",
-  focus: "Web + Mobile",
-  subtitle: "Building modern web and mobile products with React, React Native, APIs, and PostgreSQL.",
+  role: "Ingeniero de Software Full Stack",
+  focus: "Web y mobile",
+  subtitle: "Diseño y construyo productos web y móviles con React, React Native, APIs y PostgreSQL.",
   description:
-    "Full Stack Software Engineer — web and mobile. I build products with React, React Native, Expo, APIs, PostgreSQL, and Docker. Currently at Black Sheep, shipping apps on the App Store.",
+    "Ingeniero de Software Full Stack. Productos web y apps iOS/Android con React, React Native, Expo, APIs, PostgreSQL y Docker. Actualmente en Black Sheep, con apps publicadas en el App Store.",
   descriptionEs:
-    "Full Stack Software Engineer. Productos web y apps iOS/Android con React, React Native, Expo, APIs y PostgreSQL. Actualmente en Black Sheep.",
+    "Ingeniero de Software Full Stack. Productos web y apps iOS/Android con React, React Native, Expo, APIs y PostgreSQL. Actualmente en Black Sheep.",
   email: "romerozavalabrandon@gmail.com",
   phoneDisplay: "+52 729 895 8841",
   whatsapp: "https://wa.me/527298958841",
@@ -18,11 +18,13 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/brandon-romero-zavala-8247a6267",
   youtube: "https://www.youtube.com/@BrandonYRubenTV",
   youtubeName: "Somos Brandon y Rubén TV",
+  youtubeBlurb:
+    "Canal de tecnología. El enfoque principal de este portafolio es ingeniería de software; YouTube es un proyecto paralelo.",
   cvPath: "/Cv BrandonRomeroZ.pdf",
   cvDownloadName: "CV_Brandon_Romero_Zavala.pdf",
   photo: "/devbran.jpg",
   url: "https://portfoliobrandondev.vercel.app",
-  title: "Brandon Romero — Full Stack Software Engineer",
+  title: "Brandon Romero — Ingeniero de Software Full Stack",
 } as const
 
 export const appStoreUrls = {
@@ -35,6 +37,7 @@ export const navItems = [
   { id: "proyectos", label: "Proyectos" },
   { id: "experiencia", label: "Experiencia" },
   { id: "habilidades", label: "Habilidades" },
+  { id: "youtube", label: "YouTube" },
   { id: "sobre-mi", label: "Sobre mí" },
   { id: "contacto", label: "Contacto" },
 ] as const
@@ -43,7 +46,7 @@ export const experience = [
   {
     company: "Black Sheep",
     team: "Black Sheep Labs",
-    role: "Full Stack Software Engineer",
+    role: "Ingeniero de Software Full Stack",
     period: "Octubre 2025 — Presente",
     current: true,
     description:
@@ -75,8 +78,8 @@ export const featuredProjects: readonly FeaturedProject[] = [
     id: "hagamos-cine",
     title: "Hagamos Cine",
     kind: "mobile",
-    subtitle: "Mobile App · iOS / Android",
-    badge: "Live on App Store",
+    subtitle: "App móvil · iOS / Android",
+    badge: "En el App Store",
     description:
       "Red social para profesionales de la industria audiovisual: perfiles por especialidad, convocatorias, equipos de producción, tareas, chat y notificaciones. Publicada en el App Store para iPhone, iPad y Apple Watch.",
     company: "Black Sheep Labs",
@@ -92,7 +95,7 @@ export const featuredProjects: readonly FeaturedProject[] = [
       "App Groups",
     ],
     storeUrl: appStoreUrls.hagamosCine,
-    storeLabel: "View on App Store",
+    storeLabel: "Ver en App Store",
     mockupSlots: ["Red profesional", "Oportunidades", "Perfiles"],
     screenshots: [
       "/projects/hagamos-cine/hagamos-1.jpg",
@@ -106,8 +109,8 @@ export const featuredProjects: readonly FeaturedProject[] = [
     id: "red-mexico-emprende",
     title: "Red México Emprende",
     kind: "mobile",
-    subtitle: "Mobile App · iOS / Android",
-    badge: "Live on App Store",
+    subtitle: "App móvil · iOS / Android",
+    badge: "En el App Store",
     description:
       "App de networking para la Red Nacional México Emprende. Comunidad, eventos, membresías, boletos con QR, cursos, TV en vivo y directorio de empresas. En el App Store, con Apple Wallet y Google Wallet.",
     company: "Black Sheep Labs",
@@ -124,7 +127,7 @@ export const featuredProjects: readonly FeaturedProject[] = [
       "Sign in with Apple",
     ],
     storeUrl: appStoreUrls.redMexicoEmprende,
-    storeLabel: "View on App Store",
+    storeLabel: "Ver en App Store",
     mockupSlots: ["Inicio", "Mensajes", "Eventos"],
     screenshots: [
       "/projects/rnme/rnme-1.jpg",
@@ -138,7 +141,7 @@ export const featuredProjects: readonly FeaturedProject[] = [
     title: "HÜM",
     kind: "saas",
     subtitle: "SaaS · En desarrollo",
-    badge: "In progress",
+    badge: "En desarrollo",
     description:
       "SaaS de gestión multiempresa. Lo construyo con Next.js, React, TypeScript, Tailwind CSS y PostgreSQL — interfaz, API y datos en el mismo ciclo.",
     logo: "/projects/hum/hum-logo.png",
@@ -154,7 +157,7 @@ export const skillCategories = [
     items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
   },
   {
-    name: "Mobile",
+    name: "Móvil",
     items: ["React Native", "Expo", "iOS", "Android"],
   },
   {
@@ -162,7 +165,7 @@ export const skillCategories = [
     items: ["APIs", "PostgreSQL", "JWT"],
   },
   {
-    name: "Tools",
+    name: "Herramientas",
     items: ["Git", "GitHub", "Docker"],
   },
 ] as const
@@ -174,14 +177,15 @@ export const education = {
 } as const
 
 export const aboutParagraphs = [
-  "Soy Full Stack Software Engineer. Diseño y construyo productos digitales — web, mobile y la capa de datos que los sostiene.",
+  "Soy Ingeniero de Software Full Stack. Diseño y construyo productos digitales: web, móvil y la capa de datos que los sostiene.",
   "Trabajo con React, React Native y Expo, y cierro el ciclo con TypeScript, APIs, PostgreSQL y Docker.",
+  "También tengo un canal de YouTube, Somos Brandon y Rubén TV, donde hablo de tecnología. El trabajo principal es ingeniería de software.",
 ] as const
 
 export const heroButtons = [
-  { href: "#proyectos", label: "View Projects", kind: "primary" as const, external: false },
+  { href: "#proyectos", label: "Ver proyectos", kind: "primary" as const, external: false },
   { href: site.github, label: "GitHub", kind: "secondary" as const, external: true },
-  { href: "#contacto", label: "Contact", kind: "secondary" as const, external: false },
+  { href: "#contacto", label: "Contacto", kind: "secondary" as const, external: false },
 ] as const
 
 export function isAppStoreProject(
