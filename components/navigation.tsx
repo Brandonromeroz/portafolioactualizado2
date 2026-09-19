@@ -85,7 +85,7 @@ export function Navigation() {
                   key={section.id}
                   type="button"
                   onClick={() => scrollToSection(section.id)}
-                  className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  className={`relative rounded-full px-2.5 py-2 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:px-3.5 xl:text-sm ${
                     activeSection === section.id
                       ? "text-accent"
                       : "text-muted-foreground hover:text-foreground"

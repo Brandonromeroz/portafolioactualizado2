@@ -14,7 +14,7 @@ export function ExperienceSection() {
         <SectionHeading
           eyebrow="Experiencia"
           title="Dónde trabajo ahora"
-          description="Full Stack Software Engineer en Black Sheep. Web, mobile y backend de producto."
+          description="Ingeniero de Software Full Stack en Black Sheep. Web, móvil y backend de producto."
         />
 
         <div className="relative space-y-4">

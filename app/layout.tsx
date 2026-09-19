@@ -31,8 +31,7 @@ export const metadata: Metadata = {
   creator: site.legalName,
   keywords: [
     "Brandon Romero",
-    "Full Stack Software Engineer",
-    "Software Engineer",
+    "Ingeniero de Software Full Stack",
     "React",
     "React Native",
     "Expo",
@@ -44,6 +43,8 @@ export const metadata: Metadata = {
     "Mobile",
     "iOS",
     "Android",
+    "App Store",
+    "México",
   ],
   alternates: {
     canonical: site.url,
