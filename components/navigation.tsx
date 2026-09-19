@@ -79,7 +79,7 @@ export function Navigation() {
               <BrandMark showName className="sm:gap-3" nameClassName="hidden text-lg sm:block" />
             </Link>
 
-            <div className="hidden items-center gap-1 lg:flex">
+            <div className="hidden min-w-0 items-center gap-0.5 xl:flex">
               {navItems.map((section) => (
                 <button
                   key={section.id}
@@ -108,7 +108,7 @@ export function Navigation() {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen((open) => !open)}
-                className="rounded-lg p-2 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
+                className="rounded-lg p-2 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:hidden"
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-nav"
                 aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -129,7 +129,7 @@ export function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-30 bg-black/35 backdrop-blur-[2px] lg:hidden"
+              className="fixed inset-0 z-30 bg-black/35 backdrop-blur-[2px] xl:hidden"
               aria-label="Cerrar menú"
             />
             <motion.div
@@ -138,7 +138,7 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: reduceMotion ? 0 : 0.2 }}
-              className="fixed top-16 right-0 left-0 z-40 border-b border-border bg-background/95 backdrop-blur-xl lg:hidden"
+              className="fixed top-16 right-0 left-0 z-40 border-b border-border bg-background/95 backdrop-blur-xl xl:hidden"
             >
               <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
                 {navItems.map((section) => (

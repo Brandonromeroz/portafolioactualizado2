@@ -31,8 +31,9 @@ export const metadata: Metadata = {
   creator: site.legalName,
   keywords: [
     "Brandon Romero",
-    "Full Stack Software Engineer",
-    "Software Engineer",
+    "Ingeniero de Software Full Stack",
+    "Ingeniero de Software",
+    "Full Stack",
     "React",
     "React Native",
     "Expo",
@@ -90,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es-MX" suppressHydrationWarning>
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}

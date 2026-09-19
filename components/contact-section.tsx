@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Mail, Linkedin, Github, Send, MessageCircle, CheckCircle2, Download } from "lucide-react"
+import { Mail, Linkedin, Github, Send, MessageCircle, CheckCircle2, Download, Youtube } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
 import { featuredProjects, isAppStoreProject, site } from "@/lib/site"
@@ -9,7 +9,8 @@ import { featuredProjects, isAppStoreProject, site } from "@/lib/site"
 const socialLinks = [
   { icon: Github, href: site.github, label: "GitHub" },
   { icon: Linkedin, href: site.linkedin, label: "LinkedIn" },
-  { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
+  { icon: Youtube, href: site.youtube, label: "YouTube" },
+  { icon: Mail, href: `mailto:${site.email}`, label: "Correo" },
 ]
 
 export function ContactSection() {
@@ -26,7 +27,7 @@ export function ContactSection() {
     e.preventDefault()
 
     const subject = `Mensaje de ${formState.name}`
-    const body = `Nombre: ${formState.name}\nEmail: ${formState.email}\n\nMensaje:\n${formState.message}`
+    const body = `Nombre: ${formState.name}\nCorreo: ${formState.email}\n\nMensaje:\n${formState.message}`
     const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
     window.location.href = mailtoLink
@@ -51,7 +52,7 @@ export function ContactSection() {
         <SectionHeading
           eyebrow="Contacto"
           title="Hablemos"
-          description="Para trabajo, código o las apps del App Store: GitHub, LinkedIn, correo o el CV."
+          description="Para trabajo, código o las apps del App Store: GitHub, LinkedIn, YouTube, correo o el CV."
         />
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
@@ -87,7 +88,7 @@ export function ContactSection() {
 
               <div>
                 <label htmlFor="email" className="mb-2 block text-sm font-semibold text-foreground">
-                  Email
+                  Correo
                 </label>
                 <input
                   type="email"
@@ -145,7 +146,7 @@ export function ContactSection() {
             <div>
               <h3 className="mb-4 text-2xl font-semibold text-foreground sm:text-3xl">Enlaces</h3>
               <p className="leading-relaxed text-muted-foreground">
-                CV, código y las apps que construyo — publicadas en el App Store.
+                CV, código, las apps que construyo y el canal {site.youtubeName}.
               </p>
             </div>
 
@@ -156,7 +157,7 @@ export function ContactSection() {
               >
                 <Mail className="h-6 w-6 shrink-0 text-red-500" aria-hidden />
                 <span>
-                  <span className="block font-semibold text-foreground">Email</span>
+                  <span className="block font-semibold text-foreground">Correo</span>
                   <span className="break-all text-sm text-muted-foreground">{site.email}</span>
                 </span>
               </a>
@@ -173,6 +174,19 @@ export function ContactSection() {
                 </span>
               </a>
 
+              <a
+                href={site.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="surface-card flex items-center gap-4 p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Youtube className="h-6 w-6 shrink-0 text-red-600" aria-hidden />
+                <span className="min-w-0">
+                  <span className="block font-semibold text-foreground">YouTube</span>
+                  <span className="text-sm text-muted-foreground">{site.youtubeName}</span>
+                </span>
+              </a>
+
               {storeProjects.map((project) => (
                 <a
                   key={project.id}
@@ -184,7 +198,7 @@ export function ContactSection() {
                   <ExternalStoreIcon />
                   <span>
                     <span className="block font-semibold text-foreground">{project.title}</span>
-                    <span className="text-sm text-muted-foreground">View on App Store</span>
+                    <span className="text-sm text-muted-foreground">Ver en App Store</span>
                   </span>
                 </a>
               ))}

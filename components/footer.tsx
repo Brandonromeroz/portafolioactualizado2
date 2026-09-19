@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUp, Download, Github, Linkedin, Mail, MapPin } from "lucide-react"
+import { ArrowUp, Download, Github, Linkedin, Mail, MapPin, Youtube } from "lucide-react"
 import { BrandMark } from "@/components/brand-mark"
 import { featuredProjects, isAppStoreProject, navItems, site } from "@/lib/site"
 import { useReducedMotion } from "framer-motion"
@@ -25,7 +25,7 @@ export function Footer() {
                 <p className="text-sm text-muted-foreground">{site.role}</p>
               </div>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">{site.descriptionEs}</p>
+            <p className="max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">{site.description}</p>
             <a
               href={site.cvPath}
               download={site.cvDownloadName}
@@ -83,6 +83,15 @@ export function Footer() {
               >
                 <Linkedin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 LinkedIn
+              </a>
+              <a
+                href={site.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Youtube className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+                {site.youtubeName}
               </a>
               {storeProjects.map((project) => (
                 <a

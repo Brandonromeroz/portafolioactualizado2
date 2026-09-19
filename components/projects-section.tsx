@@ -29,16 +29,16 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
-                className="surface-card overflow-hidden p-6 sm:p-8 lg:p-10"
+                className="surface-card min-w-0 p-4 sm:p-8 lg:p-10"
               >
                 <div
                   className={
                     isMobile
-                      ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12"
-                      : "grid items-center gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]"
+                      ? "grid min-w-0 items-center gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12"
+                      : "grid min-w-0 items-center gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]"
                   }
                 >
-                  <div className={isMobile ? "order-2 lg:order-none" : "order-2"}>
+                  <div className={isMobile ? "order-2 min-w-0 lg:order-none" : "order-2 min-w-0"}>
                     {isMobile ? (
                       <PhoneMockupRow
                         title={project.title}
@@ -62,11 +62,11 @@ export function ProjectsSection() {
                       <span className="text-sm text-muted-foreground">{project.subtitle}</span>
                     </div>
 
-                    <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    <h3 className="font-display text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                       {project.title}
                     </h3>
 
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
                       {project.description}
                     </p>
                     {project.company ? (

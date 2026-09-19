@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
-import { Download, MapPin } from "lucide-react"
+import { Download, MapPin, Youtube } from "lucide-react"
 import { site, aboutParagraphs } from "@/lib/site"
 import { SectionHeading } from "@/components/section-heading"
 
@@ -14,8 +14,8 @@ export function AboutSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Sobre mí"
-          title="Web, mobile y producto"
-          description="Un perfil concreto: fullstack, apps en producción y software que se usa."
+          title="Web, móvil y producto"
+          description="Un perfil concreto: ingeniería fullstack, apps en producción y software que se usa."
         />
 
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
@@ -55,6 +55,15 @@ export function AboutSection() {
                 <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden />
                 {site.location}
               </span>
+              <a
+                href={site.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Youtube className="h-3.5 w-3.5 shrink-0 text-red-500" aria-hidden />
+                <span className="truncate">{site.youtubeName}</span>
+              </a>
             </div>
 
             <a
