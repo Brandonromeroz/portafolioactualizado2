@@ -47,7 +47,7 @@ export function ProjectsSection() {
                       />
                     ) : (
                       <div
-                        className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 px-6 text-center"
+                        className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-500/60 bg-zinc-900/40 px-6 text-center"
                         role="img"
                         aria-label={`Espacio de mockup web para ${project.title}`}
                       >
