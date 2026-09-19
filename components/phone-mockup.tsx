@@ -57,7 +57,7 @@ export function PhoneMockupRow({ slots, screenshots = [], title }: PhoneMockupRo
 
   return (
     <div
-      className="mx-auto grid w-full max-w-lg grid-cols-3 items-end justify-items-center gap-1.5 px-0 sm:gap-3 lg:max-w-none lg:gap-4 lg:px-2 lg:py-6"
+      className="mx-auto grid w-full grid-cols-3 items-end justify-items-center gap-1.5 px-0 sm:gap-3 md:max-w-xl lg:max-w-none lg:gap-4 lg:px-2 lg:py-6"
       role="group"
       aria-label={`Capturas de ${title}`}
     >

@@ -38,7 +38,7 @@ export function ProjectsSection() {
                       : "grid min-w-0 items-center gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]"
                   }
                 >
-                  <div className={isMobile ? "order-2 min-w-0 lg:order-none" : "order-2 min-w-0"}>
+                  <div className={isMobile ? "min-w-0" : "min-w-0 lg:order-2"}>
                     {isMobile ? (
                       <PhoneMockupRow
                         title={project.title}
@@ -54,7 +54,7 @@ export function ProjectsSection() {
                     )}
                   </div>
 
-                  <div className="order-1 min-w-0 lg:order-none">
+                  <div className="min-w-0">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-emerald-700 uppercase dark:text-emerald-300">
                         {project.badge}
