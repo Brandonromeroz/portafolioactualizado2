@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-import { skillCategories } from "@/lib/site"
+import { languages, skillCategories } from "@/lib/site"
 
 export function SkillsSection() {
   const reduceMotion = useReducedMotion()
@@ -13,7 +13,7 @@ export function SkillsSection() {
         <SectionHeading
           eyebrow="Tecnologías"
           title="Habilidades"
-          description="El stack que uso para entregar producto: frontend, móvil, APIs y datos."
+          description="React, React Native, Expo, Next.js, TypeScript, PostgreSQL, REST APIs y Docker."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -42,6 +42,10 @@ export function SkillsSection() {
             </motion.article>
           ))}
         </div>
+
+        <p className="mt-6 text-sm text-muted-foreground">
+          Idiomas: {languages.map((language) => `${language.name} ${language.level}`).join(" · ")}.
+        </p>
       </div>
     </section>
   )

@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Mail, Linkedin, Github, Send, MessageCircle, CheckCircle2, Download, Youtube } from "lucide-react"
+import { Mail, Linkedin, Github, Send, MessageCircle, CheckCircle2, Download, Youtube, Globe } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 import { SectionHeading } from "@/components/section-heading"
-import { featuredProjects, isAppStoreProject, site } from "@/lib/site"
+import { featuredProjects, isAppStoreProject, isWebsiteProject, site } from "@/lib/site"
 
 const socialLinks = [
   { icon: Github, href: site.github, label: "GitHub" },
@@ -22,6 +22,7 @@ export function ContactSection() {
   const [submitted, setSubmitted] = React.useState(false)
   const reduceMotion = useReducedMotion()
   const storeProjects = featuredProjects.filter(isAppStoreProject)
+  const websiteProjects = featuredProjects.filter(isWebsiteProject)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -186,6 +187,22 @@ export function ContactSection() {
                   <span>
                     <span className="block font-semibold text-foreground">{project.title}</span>
                     <span className="text-sm text-muted-foreground">{project.storeLabel}</span>
+                  </span>
+                </a>
+              ))}
+
+              {websiteProjects.map((project) => (
+                <a
+                  key={project.id}
+                  href={project.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="surface-card flex items-center gap-4 p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Globe className="h-6 w-6 shrink-0 text-accent" aria-hidden />
+                  <span>
+                    <span className="block font-semibold text-foreground">{project.title}</span>
+                    <span className="text-sm text-muted-foreground">Sitio web · {project.websiteLabel}</span>
                   </span>
                 </a>
               ))}

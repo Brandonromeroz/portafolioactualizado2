@@ -46,12 +46,8 @@ export function HeroSection() {
             {site.name}
           </h1>
 
-          <p className="mt-4 max-w-2xl px-1 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-xl md:text-2xl">
-            {site.subtitle}
-          </p>
-
-          <p className="mt-3 px-1 text-sm font-medium text-pretty text-foreground/80 sm:mt-4 sm:text-base">
-            {site.focus} · React · React Native · Expo
+          <p className="mt-4 max-w-3xl px-1 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg md:text-xl">
+            {site.headline}
           </p>
 
           <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-9 sm:max-w-3xl sm:flex-row sm:flex-wrap sm:justify-center">

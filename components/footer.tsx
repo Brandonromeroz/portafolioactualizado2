@@ -2,12 +2,13 @@
 
 import { ArrowUp, Download, Github, Linkedin, Mail, MapPin, Youtube } from "lucide-react"
 import { BrandMark } from "@/components/brand-mark"
-import { featuredProjects, isAppStoreProject, navItems, site } from "@/lib/site"
+import { featuredProjects, isAppStoreProject, isWebsiteProject, navItems, site } from "@/lib/site"
 import { useReducedMotion } from "framer-motion"
 
 export function Footer() {
   const reduceMotion = useReducedMotion()
   const storeProjects = featuredProjects.filter(isAppStoreProject)
+  const websiteProjects = featuredProjects.filter(isWebsiteProject)
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
@@ -102,6 +103,17 @@ export function Footer() {
                   className="block hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {project.title} · App Store
+                </a>
+              ))}
+              {websiteProjects.map((project) => (
+                <a
+                  key={project.id}
+                  href={project.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {project.title} · Sitio web
                 </a>
               ))}
             </div>

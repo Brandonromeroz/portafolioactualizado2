@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import { Download, MapPin } from "lucide-react"
-import { site, aboutParagraphs } from "@/lib/site"
+import { site, aboutParagraphs, languages } from "@/lib/site"
 import { SectionHeading } from "@/components/section-heading"
 
 export function AboutSection() {
@@ -55,6 +55,14 @@ export function AboutSection() {
                 <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden />
                 {site.location}
               </span>
+              {languages.map((language) => (
+                <span
+                  key={language.name}
+                  className="inline-flex items-center rounded-full border border-border bg-background px-3.5 py-1.5 text-foreground"
+                >
+                  {language.name} {language.level}
+                </span>
+              ))}
             </div>
 
             <a

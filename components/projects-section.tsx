@@ -14,8 +14,8 @@ export function ProjectsSection() {
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         <SectionHeading
           eyebrow="Proyectos"
-          title="Apps en el App Store y un SaaS en curso"
-          description="Apps publicadas en el App Store y un SaaS en desarrollo. Productos reales, con capturas oficiales."
+          title="Apps en el App Store y un sitio web"
+          description="Tres apps publicadas en el App Store. HÜM es un sitio web, no una app."
         />
 
         <div className="space-y-8 sm:space-y-10 lg:space-y-16">
@@ -84,16 +84,31 @@ export function ProjectsSection() {
                       ))}
                     </ul>
 
-                    {project.storeUrl ? (
-                      <a
-                        href={project.storeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                      >
-                        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
-                        {project.storeLabel}
-                      </a>
+                    {project.storeUrl || project.websiteUrl ? (
+                      <div className="mt-6 flex flex-wrap gap-3">
+                        {project.storeUrl ? (
+                          <a
+                            href={project.storeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          >
+                            <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                            {project.storeLabel}
+                          </a>
+                        ) : null}
+                        {project.websiteUrl ? (
+                          <a
+                            href={project.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          >
+                            <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                            {project.websiteLabel}
+                          </a>
+                        ) : null}
+                      </div>
                     ) : null}
                   </div>
                 </div>

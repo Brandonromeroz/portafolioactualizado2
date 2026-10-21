@@ -5,11 +5,13 @@ export const site = {
   firstName: "Brandon",
   role: "Ingeniero de Software Full Stack",
   focus: "Web y mobile",
-  subtitle: "Diseño y construyo productos web y móviles con React, React Native, APIs y PostgreSQL.",
+  headline:
+    "Ingeniero de Software Full Stack | React, React Native, Next.js, TypeScript, PostgreSQL | Apps publicadas en App Store",
+  subtitle: "Productos web y apps con React, React Native, Next.js, TypeScript y PostgreSQL.",
   description:
-    "Ingeniero de Software Full Stack. Productos web y apps iOS/Android con React, React Native, Expo, APIs, PostgreSQL y Docker. Actualmente en Black Sheep, con apps publicadas en el App Store.",
+    "Ingeniero de Software Full Stack. Productos web y apps con React, React Native, Expo, Next.js, TypeScript, PostgreSQL y Docker. Apps publicadas en el App Store.",
   descriptionEs:
-    "Ingeniero de Software Full Stack. Productos web y apps iOS/Android con React, React Native, Expo, APIs y PostgreSQL. Actualmente en Black Sheep.",
+    "Ingeniero de Software Full Stack. Productos web y apps con React, React Native, Expo, Next.js, TypeScript, PostgreSQL y Docker. Apps publicadas en el App Store.",
   email: "romerozavalabrandon@gmail.com",
   phoneDisplay: "+52 729 895 8841",
   whatsapp: "https://wa.me/527298958841",
@@ -19,8 +21,8 @@ export const site = {
   youtube: "https://www.youtube.com/@BrandonYRubenTV",
   youtubeName: "Somos Brandon y Rubén TV",
   youtubeBlurb:
-    "Canal de tecnología. El enfoque principal de este portafolio es ingeniería de software; YouTube es un proyecto paralelo.",
-  cvPath: "/Cv BrandonRomeroZ.pdf",
+    "Canal de tecnología en YouTube (@BrandonYRubenTV), de enero de 2020 a la fecha.",
+  cvPath: "/CV_Brandon_Romero_Zavala.pdf",
   cvDownloadName: "CV_Brandon_Romero_Zavala.pdf",
   photo: "/devbran.jpg",
   url: "https://portfoliobrandondev.vercel.app",
@@ -29,7 +31,12 @@ export const site = {
 
 export const appStoreUrls = {
   hagamosCine: "https://apps.apple.com/mx/app/hagamos-cine/id6764647013",
-  redMexicoEmprende: "https://apps.apple.com/mx/app/red-m%C3%A9xico-emprende/id6761429362",
+  redNacionalMexicoEmprende: "https://apps.apple.com/mx/app/id6761429362",
+  stick: "https://apps.apple.com/mx/app/stick-by-black-sheep/id6760153552",
+} as const
+
+export const projectUrls = {
+  hum: "https://fyttsatalent.com",
 } as const
 
 export const navItems = [
@@ -44,14 +51,44 @@ export const navItems = [
 
 export const experience = [
   {
-    company: "Black Sheep",
-    team: "Black Sheep Labs",
-    role: "Ingeniero de Software Full Stack",
-    period: "Octubre 2025 — Presente",
-    current: true,
+    company: "Somos Brandon y Rubén TV",
+    team: "YouTube · @BrandonYRubenTV",
+    role: "Creador de contenido tech",
+    period: "Enero 2020 — Presente",
+    current: false,
     description:
-      "En Black Sheep Labs construyo productos web y móviles de punta a punta: interfaces en React, apps iOS/Android con React Native y Expo, APIs, PostgreSQL y Docker. Entrego funcionalidades en producción y mantengo las apps publicadas en el App Store.",
-    technologies: ["React", "React Native", "Expo", "TypeScript", "APIs", "PostgreSQL", "Docker"],
+      "Canal de tecnología en YouTube (@BrandonYRubenTV), de enero de 2020 a la fecha.",
+    technologies: [],
+  },
+  {
+    company: "SKY DELIVER (Grupo AB)",
+    team: "",
+    role: "Desarrollador web",
+    period: "Marzo 2025 — Junio 2025",
+    current: false,
+    description:
+      "Desarrollo de una plataforma web para pedidos automatizados con drones: base de datos MongoDB para usuarios, pedidos y rutas de entrega, y una API REST para la comunicación entre la web y los drones. Resultado: reducción de errores y tiempos de operación en 30%.",
+    technologies: ["MongoDB", "REST APIs"],
+  },
+  {
+    company: "AI KOI (Fundación)",
+    team: "",
+    role: "Desarrollador web",
+    period: "Septiembre 2024 — Diciembre 2024",
+    current: false,
+    description:
+      "Desarrollo de la página principal y módulos para cursos en línea. Implementación de pasarelas de pago y automatización de procesos. Resultado: reducción de tiempos administrativos en 40%.",
+    technologies: [],
+  },
+  {
+    company: "Sherwin-Williams",
+    team: "",
+    role: "Colaboración en drones y sitio web",
+    period: "",
+    current: false,
+    description:
+      "Participé en la construcción de drones para un servicio de entrega a domicilio y desarrollé el sitio web de ese servicio.",
+    technologies: [],
   },
 ] as const
 
@@ -69,6 +106,8 @@ export type FeaturedProject = {
   technologies: readonly string[]
   storeUrl?: string
   storeLabel?: string
+  websiteUrl?: string
+  websiteLabel?: string
   mockupSlots: readonly string[]
   screenshots: readonly string[]
 }
@@ -82,7 +121,6 @@ export const featuredProjects: readonly FeaturedProject[] = [
     badge: "En el App Store",
     description:
       "Red social para profesionales de la industria audiovisual: perfiles por especialidad, convocatorias, equipos de producción, tareas, chat y notificaciones. Publicada en el App Store para iPhone, iPad y Apple Watch.",
-    company: "Black Sheep Labs",
     technologies: [
       "React Native",
       "Expo",
@@ -107,13 +145,12 @@ export const featuredProjects: readonly FeaturedProject[] = [
   },
   {
     id: "red-mexico-emprende",
-    title: "Red México Emprende",
+    title: "Red Nacional México Emprende",
     kind: "mobile",
     subtitle: "App móvil · iOS / Android",
     badge: "En el App Store",
     description:
       "App de networking para la Red Nacional México Emprende. Comunidad, eventos, membresías, boletos con QR, cursos, TV en vivo y directorio de empresas. En el App Store, con Apple Wallet y Google Wallet.",
-    company: "Black Sheep Labs",
     technologies: [
       "React Native",
       "Expo",
@@ -126,7 +163,7 @@ export const featuredProjects: readonly FeaturedProject[] = [
       "Google Wallet",
       "Sign in with Apple",
     ],
-    storeUrl: appStoreUrls.redMexicoEmprende,
+    storeUrl: appStoreUrls.redNacionalMexicoEmprende,
     storeLabel: "Ver en App Store",
     mockupSlots: ["Inicio", "Mensajes", "Eventos"],
     screenshots: [
@@ -137,14 +174,34 @@ export const featuredProjects: readonly FeaturedProject[] = [
     ],
   },
   {
+    id: "stick",
+    title: "Stick",
+    kind: "mobile",
+    subtitle: "App móvil · iOS",
+    badge: "En el App Store",
+    description:
+      "App publicada en el App Store para organizar tareas y equipos: gestión de proyectos, tableros, calendario y línea de tiempo.",
+    technologies: ["iOS"],
+    storeUrl: appStoreUrls.stick,
+    storeLabel: "Ver en App Store",
+    mockupSlots: ["Proyectos", "Tablero", "Inicio"],
+    screenshots: [
+      "/projects/stick/stick-1.jpg",
+      "/projects/stick/stick-2.jpg",
+      "/projects/stick/stick-3.jpg",
+    ],
+  },
+  {
     id: "hum",
     title: "HÜM",
     kind: "saas",
-    subtitle: "SaaS · En desarrollo",
-    badge: "En desarrollo",
+    subtitle: "Sitio web · fyttsatalent.com",
+    badge: "Sitio web",
     description:
-      "SaaS de gestión multiempresa. Lo construyo con Next.js, React, TypeScript, Tailwind CSS y PostgreSQL — interfaz, API y datos en el mismo ciclo.",
+      "Sitio web de una plataforma de recursos humanos. No es una app. Interfaz, API y datos con Next.js, React, TypeScript, Tailwind CSS y PostgreSQL.",
     logo: "/projects/hum/hum-logo.png",
+    websiteUrl: projectUrls.hum,
+    websiteLabel: "Ver sitio",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"],
     mockupSlots: ["Landing"],
     screenshots: ["/projects/hum/hum-landing-1.png"],
@@ -154,19 +211,47 @@ export const featuredProjects: readonly FeaturedProject[] = [
 export const skillCategories = [
   {
     name: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+    items: ["React", "Next.js", "TypeScript"],
   },
   {
     name: "Móvil",
-    items: ["React Native", "Expo", "iOS", "Android"],
+    items: ["React Native", "Expo"],
   },
   {
-    name: "Backend",
-    items: ["APIs", "PostgreSQL", "JWT"],
+    name: "Datos y APIs",
+    items: ["PostgreSQL", "REST APIs"],
   },
   {
     name: "Herramientas",
-    items: ["Git", "GitHub", "Docker"],
+    items: ["Docker"],
+  },
+] as const
+
+export const languages = [
+  { name: "Español", level: "Nativo" },
+  { name: "Inglés", level: "B1" },
+] as const
+
+export const certifications = [
+  {
+    name: "Desarrollador de Contenido Digital",
+    issuer: "Fundación Carlos Slim",
+    date: "Enero 2024",
+  },
+  {
+    name: "Tester de Software",
+    issuer: "Fundación Carlos Slim",
+    date: "Septiembre 2023",
+  },
+  {
+    name: "Desarrollador Back-End",
+    issuer: "Fundación Carlos Slim",
+    date: "Noviembre 2021",
+  },
+  {
+    name: "Programación Orientada a Objetos",
+    issuer: "Fundación Carlos Slim",
+    date: "Agosto 2021",
   },
 ] as const
 
@@ -178,8 +263,8 @@ export const education = {
 
 export const aboutParagraphs = [
   "Soy Ingeniero de Software Full Stack. Diseño y construyo productos digitales: web, móvil y la capa de datos que los sostiene.",
-  "Trabajo con React, React Native y Expo, y cierro el ciclo con TypeScript, APIs, PostgreSQL y Docker.",
-  "También tengo un canal de YouTube, Somos Brandon y Rubén TV, donde hablo de tecnología. El trabajo principal es ingeniería de software.",
+  "El stack de producto es React, React Native, Expo, Next.js, TypeScript, PostgreSQL, REST APIs y Docker. Hay tres apps publicadas en el App Store.",
+  "Desde enero de 2020 publico contenido de tecnología en el canal de YouTube Somos Brandon y Rubén TV (@BrandonYRubenTV).",
 ] as const
 
 export const heroButtons = [
@@ -192,4 +277,10 @@ export function isAppStoreProject(
   project: FeaturedProject,
 ): project is FeaturedProject & { storeUrl: string; storeLabel: string } {
   return Boolean(project.storeUrl && project.storeLabel)
+}
+
+export function isWebsiteProject(
+  project: FeaturedProject,
+): project is FeaturedProject & { websiteUrl: string; websiteLabel: string } {
+  return Boolean(project.websiteUrl && project.websiteLabel)
 }
