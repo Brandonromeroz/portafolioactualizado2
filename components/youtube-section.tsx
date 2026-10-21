@@ -13,7 +13,7 @@ export function YouTubeSection() {
         <SectionHeading
           eyebrow="YouTube"
           title="También en YouTube"
-          description="Además del trabajo como ingeniero, publico contenido de tecnología en Somos Brandon y Rubén TV."
+          description="Creador de contenido tech en YouTube (@BrandonYRubenTV), de enero de 2020 a la fecha."
         />
 
         <motion.div

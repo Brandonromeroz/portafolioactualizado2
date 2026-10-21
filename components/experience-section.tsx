@@ -13,8 +13,8 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Experiencia"
-          title="Dónde trabajo ahora"
-          description="Ingeniero de Software Full Stack en Black Sheep. Web, móvil y backend de producto."
+          title="Trayectoria"
+          description="Contenido de tecnología, desarrollo web y una colaboración en drones y el sitio de un servicio de entrega."
         />
 
         <div className="relative space-y-4">
@@ -45,25 +45,29 @@ export function ExperienceSection() {
                     ) : null}
                   </div>
                   <p className="font-medium text-accent">{exp.role}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{exp.team}</p>
+                  {exp.team ? <p className="mt-1 text-sm text-muted-foreground">{exp.team}</p> : null}
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{exp.description}</p>
                 </div>
 
                 <div className="flex flex-col gap-3 lg:items-end">
-                  <div className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <Calendar className="h-3.5 w-3.5" aria-hidden />
-                    <span>{exp.period}</span>
-                  </div>
-                  <ul className="flex flex-wrap gap-1.5 lg:justify-end" aria-label="Tecnologías del rol">
-                    {exp.technologies.map((tech) => (
-                      <li
-                        key={tech}
-                        className="rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
+                  {exp.period ? (
+                    <div className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5" aria-hidden />
+                      <span>{exp.period}</span>
+                    </div>
+                  ) : null}
+                  {exp.technologies.length > 0 ? (
+                    <ul className="flex flex-wrap gap-1.5 lg:justify-end" aria-label="Tecnologías del rol">
+                      {exp.technologies.map((tech) => (
+                        <li
+                          key={tech}
+                          className="rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground"
+                        >
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               </div>
             </motion.article>
