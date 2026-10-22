@@ -1,11 +1,14 @@
 "use client"
 
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { ArrowUp, Download, Github, Linkedin, Mail, MapPin, Youtube } from "lucide-react"
 import { BrandMark } from "@/components/brand-mark"
 import { featuredProjects, isAppStoreProject, isWebsiteProject, navItems, site } from "@/lib/site"
 import { useReducedMotion } from "framer-motion"
 
 export function Footer() {
+  const pathname = usePathname()
   const reduceMotion = useReducedMotion()
   const storeProjects = featuredProjects.filter(isAppStoreProject)
   const websiteProjects = featuredProjects.filter(isWebsiteProject)
@@ -43,7 +46,7 @@ export function Footer() {
               {navItems.map((link) => (
                 <li key={link.id}>
                   <a
-                    href={`#${link.id}`}
+                    href={pathname === "/" ? `#${link.id}` : `/#${link.id}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     {link.label}
@@ -121,8 +124,15 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-6 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {site.legalName}.
+          <p className="text-center text-sm text-muted-foreground md:text-left">
+            © {new Date().getFullYear()} {site.legalName}.{" "}
+            <Link
+              href="/privacidad"
+              aria-current={pathname === "/privacidad" ? "page" : undefined}
+              className="text-xs text-muted-foreground/80 underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Política de privacidad
+            </Link>
           </p>
           <button
             type="button"
